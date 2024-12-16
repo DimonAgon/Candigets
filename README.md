@@ -10,6 +10,7 @@ After cloning the repo:
 2. Configure environment:
    
    define TELEGRAM_BOT_TOKEN
+   
    define COLLECTING_TRANSMITTING_DELETING_DELAY
 
 
