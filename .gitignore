@@ -11,5 +11,7 @@ __pycache__/
 .idea
 
 .venv
+.env
 
-
+candigets.db
+test.py

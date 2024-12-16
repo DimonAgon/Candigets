@@ -1,0 +1,2 @@
+
+VOID_SYMBOL = "_"
