@@ -312,7 +312,7 @@ curriculum_vitae_checkbox_xpath_pattern = (
     'div[11]/'
     'alliance-employer-cvdb-resume-filling-simple/'
     'alliance-shared-checkbox-recursive-list/'
-    f'div[{"{ad_number}"}]/'
+    f'div[{"{number}"}]/'
     'santa-checkbox/'
     'div/'
     'label'
