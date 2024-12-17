@@ -17,7 +17,7 @@ class CandidateAd(Base):
     __tablename__ = candidate_ad_table_name
 
     id: Mapped[int] = mapped_column(primary_key=True)
-    external_id: Mapped[int] = mapped_column(unique=True)
+    external_id: Mapped[int] = mapped_column()
     search_demand_id: Mapped[int] = mapped_column(sqlalchemy.ForeignKey(search_demand_id_field_reference))
     search_demand: Mapped['SearchDemand'] = relationship(back_populates=candidates_ads_table_name)
     source: Mapped[str] = mapped_column(sqlalchemy.CHAR(MAX_URL_LENGTH))
