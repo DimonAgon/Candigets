@@ -5,8 +5,11 @@ from aiogram_forms.forms.fields import TextField
 
 from aiogram.types import Message
 
+import sqlalchemy
+
 from additions.forms.fields import VoidAcceptingField
 from db.models import SearchDemand
+from db.db_infrastructure.data_types import *
 from sqlalchemy.ext.asyncio import AsyncSession
 from misc.exceptions import *
 from .forms_infrastructure.field_labels import FIELD_CHAT_MESSAGES
@@ -53,6 +56,8 @@ class SearchDemandForm(Form):
         field_chat_message = FIELD_CHAT_MESSAGES[particular]
         if particular in INTERACTION_VARIANTS[InteractionVariant.Writable]:
             field_label = field_chat_message
+            particular_data_type = DATA_TYPES[particular]
+            field_validators = (validate_is_integer_string,) if particular_data_type == sqlalchemy.INTEGER else []
             field_class = VoidAcceptingField
             field_value_data = {'label': field_label}
         elif particular in INTERACTION_VARIANTS[InteractionVariant.Clickable.SELECTABLE]:
