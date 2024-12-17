@@ -1,7 +1,7 @@
 
 #keywords
 
-#particles
+    #particles
 only_kw = "тільки"
 with_kw = "з"
 from_kw = "з"
