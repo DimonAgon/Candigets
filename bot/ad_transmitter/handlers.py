@@ -14,7 +14,7 @@ import json
 from typing import List
 
 
-def prepare_ad_fields_data(ad: CandidateAd) -> List[ParticularFieldData]:
+def prepare_ad_field_datas(ad: CandidateAd) -> List[ParticularFieldData]:
     ad_fields_data = get_db_object_fields_data(ad)
     del ad_fields_data[id_kw]
     del ad_fields_data[external_id_field_name]
@@ -30,7 +30,7 @@ def prepare_ad_fields_data(ad: CandidateAd) -> List[ParticularFieldData]:
     return fields
 
 def create_ad_text(ad: CandidateAd) -> str:
-    ad_fields_data = prepare_ad_fields_data(ad)
+    ad_fields_data = prepare_ad_field_datas(ad)
     message_text = ""
     for field in ad_fields_data:
         if field.value:
