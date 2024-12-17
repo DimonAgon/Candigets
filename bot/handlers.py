@@ -14,7 +14,6 @@ from .filters import *
 from db.models import *
 from misc.static_text.ukrainian import bot_instruction_text
 
-
 from misc.static_text.english import *
 
 

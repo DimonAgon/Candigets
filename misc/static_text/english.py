@@ -1,5 +1,5 @@
+
 #keywords
-from misc.static_text.ukrainian import salary_kw, fullness_kw
 
 #particles
     #p̶a̶r̶t̶i̶c̶l̶e̶s̶
