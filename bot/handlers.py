@@ -36,9 +36,13 @@ async def demand_command(message: Message, forms: FormsManager) -> None:
 async def clear_demand_command(message: Message, session: AsyncSession) -> None:
     user_id = message.from_user.id
     demand_deletion_query = sqlalchemy.delete(SearchDemand).where(SearchDemand.user_id == user_id)
-    all_demand_ads_deletion_query = sqlalchemy.delete(CandidateAd).where(CandidateAd.search_demand.user_id == user_id)
+    try:
+        all_demand_ads_deletion_query = \
+            sqlalchemy.delete(CandidateAd).where(CandidateAd.search_demand.user_id == user_id)
+        await session.execute(all_demand_ads_deletion_query)
+    except AttributeError:
+        pass
     await session.execute(demand_deletion_query)
-    await session.execute(all_demand_ads_deletion_query)
     await session.commit()
     await message.answer(search_demand_on_deletion_success_chat_message)
 

@@ -22,7 +22,10 @@ class AdDeletor:
         )
         depleted_demands = await session.scalars(depleted_demands_query)
         for demand in depleted_demands:
-            delete_all_demand_ads_query = sqlalchemy.delete(CandidateAd).where(CandidateAd.search_demand == demand)
-            await session.execute(delete_all_demand_ads_query)
-            await session.delete(demand)
+            try:
+                delete_all_demand_ads_query = sqlalchemy.delete(CandidateAd).where(CandidateAd.search_demand == demand)
+                await session.execute(delete_all_demand_ads_query)
+                await session.delete(demand)
+            except AttributeError:
+                pass
         await session.commit()
