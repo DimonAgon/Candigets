@@ -199,9 +199,10 @@ class CandidateRobotaScrapper:
         cls.search_ads(demand, driver_)
         current_url = driver_.current_url
         page = 1
-        while page == 1 or page != 1 and driver_.current_url != current_url:
+        while page == 1 or (page != 1 and driver_.current_url != current_url):
             next_page_url = f"{current_url}&{page_kw}={page}"
             driver_.get(next_page_url)
+            current_url = driver_.current_url
             ad_number = 1
             while True:
                 try:
