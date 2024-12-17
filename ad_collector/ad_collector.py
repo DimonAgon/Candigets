@@ -35,7 +35,6 @@ class AdCollector:
         demand.collect = True
         await session.merge(demand)
         await session.commit()
-        driver_.close()
 
     @classmethod
     @session_delivery.deliver_session
@@ -45,3 +44,4 @@ class AdCollector:
         for demand in all_demands_to_collect:
             driver_ = webdriver.Chrome()
             await cls.collect_demand_ads(demand, driver_=driver_)
+            driver_.close()
